@@ -1,0 +1,16 @@
+pipeline {
+    agent { label 'java' }
+
+    stages {
+        stage('clone the repo') {
+            steps {
+                git branch: 'main', url: 'https://github.com/sujit7377/java-file.git'
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+    }
+}
